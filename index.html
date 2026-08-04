@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Ravi</title>
+<meta name="description" content="Rahul Ravi — Machine Learning Researcher, Medical Imaging, Geoscience & Electron Microscopy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:        #14181C;
+    --ink-soft:   #495057;
+    --paper:      #ECEFEC;
+    --paper-2:    #F6F7F5;
+    --line:       #CBD1CB;
+    --teal:       #2E6F6B;
+    --teal-dim:   #E4ECEB;
+    --ochre:      #B8863B;
+    --white:      #FFFFFF;
+
+    --font-display: 'Fraunces', serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --sidebar-w: 300px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--paper-2);
+    line-height:1.6;
+  }
+
+  a{ color:var(--teal); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--teal); outline-offset:3px;
+  }
+
+  /* ===== Layout shell ===== */
+  .shell{
+    display:flex;
+    min-height:100vh;
+  }
+
+  /* ===== Sidebar ===== */
+  .sidebar{
+    width:var(--sidebar-w);
+    flex-shrink:0;
+    background:var(--ink);
+    color:var(--paper-2);
+    padding:48px 32px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+
+  .avatar{
+    width:88px; height:88px;
+    border-radius:50%;
+    background:var(--teal);
+    color:var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display);
+    font-size:32px;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+
+  .sidebar h1{
+    font-family:var(--font-display);
+    font-size:26px;
+    font-weight:600;
+    line-height:1.15;
+    margin-top:4px;
+  }
+
+  .sidebar .role{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:#A9B4AF;
+    margin-top:8px;
+    line-height:1.7;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+
+  .sidebar .contact{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    font-size:13.5px;
+  }
+  .sidebar .contact a{ color:#D7DCD8; }
+  .sidebar .contact a:hover{ color:var(--white); }
+
+  .socials{
+    display:flex;
+    gap:14px;
+  }
+  .socials a{
+    width:34px; height:34px;
+    border:1px solid #3A4046;
+    border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    color:#D7DCD8;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .socials a:hover{
+    border-color:var(--teal);
+    color:var(--white);
+    text-decoration:none;
+  }
+  .socials svg{ width:16px; height:16px; }
+
+  nav.sidenav{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    margin-top:auto;
+    padding-top:20px;
+    border-top:1px solid #2B3036;
+  }
+  nav.sidenav a{
+    color:#B7BEB9;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    padding:7px 0;
+  }
+  nav.sidenav a:hover{ color:var(--white); text-decoration:none; }
+
+  /* ===== Main content ===== */
+  main{
+    flex:1;
+    min-width:0;
+    padding:56px 64px 100px;
+    max-width:880px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--teal);
+    margin-bottom:10px;
+    display:block;
+  }
+
+  section{
+    margin-bottom:64px;
+    scroll-margin-top:40px;
+  }
+
+  section h2{
+    font-family:var(--font-display);
+    font-size:28px;
+    font-weight:600;
+    margin-bottom:20px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .lede{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:640px;
+  }
+
+  /* ---- Waveform signature ---- */
+  .trace{
+    width:100%;
+    height:56px;
+    margin:36px 0 8px;
+    display:block;
+  }
+  .trace path{ fill:none; stroke-width:1.6; }
+  .trace .p1{ stroke:var(--teal); opacity:0.9; }
+  .trace .p2{ stroke:var(--ochre); opacity:0.55; }
+
+  /* ---- Cards / details ---- */
+  details{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:12px;
+    overflow:hidden;
+  }
+  details + details{ margin-top:12px; }
+
+  summary{
+    list-style:none;
+    cursor:pointer;
+    padding:18px 22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    font-family:var(--font-body);
+  }
+  summary::-webkit-details-marker{ display:none; }
+
+  summary .title-block{ display:flex; flex-direction:column; gap:3px; }
+  summary .role-title{ font-weight:600; font-size:15.5px; color:var(--ink); }
+  summary .org{ font-size:13.5px; color:var(--ink-soft); }
+  summary .dates{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--teal);
+    white-space:nowrap;
+    padding-top:2px;
+  }
+  summary .chevron{
+    flex-shrink:0;
+    width:18px; height:18px;
+    margin-top:2px;
+    transition:transform .2s ease;
+    color:var(--ink-soft);
+  }
+  details[open] summary .chevron{ transform:rotate(90deg); }
+
+  .details-body{
+    padding:0 22px 22px;
+    border-top:1px solid var(--paper);
+    padding-top:16px;
+    font-size:14.5px;
+  }
+  .details-body h4{
+    font-size:14px;
+    margin:14px 0 6px;
+    color:var(--ink);
+  }
+  .details-body h4:first-child{ margin-top:0; }
+  .details-body ul{
+    padding-left:20px;
+    color:var(--ink-soft);
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .details-body a{ font-weight:500; }
+
+  .section-note{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+
+  /* ---- Publications ---- */
+  .pub{
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .pub:last-child{ border-bottom:none; }
+  .pub .pub-title{ font-weight:600; font-size:15px; margin-bottom:4px; }
+  .pub .pub-meta{ font-family:var(--font-mono); font-size:12px; color:var(--teal); margin-bottom:6px; }
+  .pub .pub-desc{ font-size:14px; color:var(--ink-soft); }
+
+  /* ---- Education ---- */
+  .edu-item{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px; }
+  .edu-item .deg{ font-weight:600; font-size:15.5px; }
+  .edu-item .yrs{ font-family:var(--font-mono); font-size:12.5px; color:var(--teal); white-space:nowrap; }
+  .edu-sub{ font-size:14px; color:var(--ink-soft); margin-bottom:4px; }
+  .award{
+    display:inline-block;
+    margin-top:10px;
+    font-size:12.5px;
+    font-family:var(--font-mono);
+    background:var(--teal-dim);
+    color:var(--teal);
+    padding:5px 10px;
+    border-radius:5px;
+  }
+
+  /* ---- Skills ---- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px 32px;
+  }
+  .skill-cat h4{
+    font-family:var(--font-mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--teal);
+    margin-bottom:8px;
+  }
+  .skill-cat p{ font-size:14px; color:var(--ink-soft); }
+
+  /* ---- Contact ---- */
+  .contact-cta{
+    background:var(--ink);
+    color:var(--paper-2);
+    border-radius:10px;
+    padding:36px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .contact-cta h3{
+    font-family:var(--font-display);
+    font-size:22px;
+    font-weight:600;
+  }
+  .contact-cta p{ color:#B7BEB9; font-size:14px; margin-top:6px; }
+  .btn{
+    display:inline-block;
+    background:var(--teal);
+    color:var(--white);
+    padding:12px 22px;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:500;
+    white-space:nowrap;
+  }
+  .btn:hover{ background:#255A57; text-decoration:none; }
+
+  footer{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--ink-soft);
+    padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 860px){
+    .shell{ flex-direction:column; }
+    .sidebar{
+      position:relative;
+      width:100%;
+      height:auto;
+      padding:32px 24px;
+    }
+    nav.sidenav{
+      flex-direction:row;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:20px;
+      border-top:none;
+      padding-top:0;
+    }
+    main{ padding:40px 24px 80px; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .contact-cta{ flex-direction:column; align-items:flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .chevron{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <div class="avatar">RR</div>
+    <div>
+      <h1>Rahul Ravi</h1>
+      <div class="role">
+        Machine Learning Researcher<br>
+        Medical Imaging &middot; Geoscience<br>
+        Electron Microscopy
+      </div>
+    </div>
+
+    <div class="contact">
+      <a href="mailto:rahul.ravi0623@gmail.com">rahul.ravi0623@gmail.com</a>
+      <a href="tel:+919606736263">+91 96067 36263</a>
+    </div>
+
+    <div class="socials">
+      <a href="#" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.65 4.76 6.1V23h-4v-6.9c0-1.64-.03-3.75-2.29-3.75-2.29 0-2.64 1.79-2.64 3.63V23h-4V8z"/></svg>
+      </a>
+      <a href="#" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+      </a>
+      <a href="#" aria-label="Google Scholar" title="Google Scholar">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L0 9l4 2.5V19h16v-7.5L24 9 12 1zm0 2.4L20 9l-8 5.6L4 9l8-5.6zM6 13.2l6 4.2 6-4.2V17H6v-3.8z"/></svg>
+      </a>
+    </div>
+
+    <nav class="sidenav">
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
+
+  <!-- ===== Main ===== -->
+  <main>
+
+    <section id="about">
+      <span class="eyebrow">About</span>
+      <h2>Signal across domains</h2>
+      <p class="lede">
+        I develop and rigorously evaluate resource-efficient scientific ML methods that generalise
+        across acquisition regimes and deployment contexts — currently working across medical
+        imaging, geoscience, electron microscopy, and power electronics through independent and
+        collaborative research at the University of Nottingham.
+      </p>
+
+      <!-- signature waveform: three overlapping traces nodding to seismic / MRI / EM signal domains -->
+      <svg class="trace" viewBox="0 0 800 56" preserveAspectRatio="none" aria-hidden="true">
+        <path class="p1" d="M0,28 L40,28 L52,8 L64,48 L76,14 L88,42 L100,28 L160,28 L172,20 L184,36 L196,10 L208,46 L220,28 L800,28"/>
+        <path class="p2" d="M0,30 C60,30 60,12 120,12 C180,12 180,44 240,44 C300,44 300,18 360,18 C420,18 420,38 480,38 C540,38 540,26 800,26"/>
+      </svg>
+    </section>
+
+    <section id="publications">
+      <span class="eyebrow">Research Output</span>
+      <h2>Publications</h2>
+
+      <div class="pub">
+        <div class="pub-title">Cross-Regional Seismic Hazard Forecasting Across Diverse Tectonic Regimes via Frozen Geological Priors</div>
+        <div class="pub-meta">R. Ravi &middot; Under review, Computers &amp; Geosciences &middot; 2026 (Preprint)</div>
+        <div class="pub-desc">Proposes a frozen geological prior GNN architecture for parameter-efficient cross-regional transfer, evaluated via a Monte Carlo Patch Cycling framework across 8 tectonic regimes.</div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Breast Cancer Neoadjuvant Chemotherapy Treatment Response Prediction Using Aligned Longitudinal MRI and Clinical Data</div>
+        <div class="pub-meta">R. Ravi, R. Li, T. Abdelfatah, S. Chan, X. Chen &middot; Under review, Informatics in Medicine Unlocked &middot; 2025 (Preprint)</div>
+        <div class="pub-desc">Predictive modelling framework combining registered longitudinal MRI and clinical data to forecast pathological complete response and relapse-free survival.</div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <span class="eyebrow">Career &amp; Projects</span>
+      <h2>Experience &amp; Research</h2>
+      <p class="section-note">Sorted by most recent — ongoing roles first, then descending by end date.</p>
+
+      <details open>
+        <summary>
+          <div class="title-block">
+            <span class="role-title">Co-Founder</span>
+            <span class="org">Auxi Studios</span>
+          </div>
+          <span class="dates">Sept 2025 – Present</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </summary>
+        <div class="details-body">
+          <ul>
+            <li>Designed and productionized ORAS, an interactive business simulation tool with a real-time resource allocation engine</li>
+            <li>Ran production testing with 28 users across two focus groups, identifying and fixing critical race conditions</li>
+            <li>Built a scalable, zero-install, browser-based architecture optimized for accessibility and concurrent usage</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="title-block">
+            <span class="role-title">ATP: Auto-Tagging Pipeline for Wildlife Conservatories</span>
+            <span class="org">Independent research project</span>
+          </div>
+          <span class="dates">May 2026 – Present</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </summary>
+        <div class="details-body">
+          <ul>
+            <li>Applied transfer learning for animal detection using pre-trained models (SpeciesNet, built on YOLOv5)</li>
+            <li>Ran ablations on dynamic thresholding and custom evaluation methods, achieving &gt;97% accuracy (&lt;1% std) under low-light, blurry, and distorted conditions</li>
+            <li>Architected a hierarchical detection and species classification pipeline across &gt;75k camera-trap images spanning 40 species and 10 families</li>
+            <li>Implemented Grad-CAM for feature attribution via backward gradient propagation</li>
+            <li>Extending the pipeline with re-identification and longitudinal health monitoring methods</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="title-block">
+            <span class="role-title">Research Assistant — Computer Science</span>
+            <span class="org">University of Nottingham</span>
+          </div>
+          <span class="dates">Sept 2023 – Present</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </summary>
+        <div class="details-body">
+          <h4>Breast Cancer Treatment Response Prediction (<a href="#">Paper</a>)</h4>
+          <ul>
+            <li>Built a predictive modelling framework analysing 1,700+ longitudinal MRI scans across 600 patients to forecast pathological treatment response (PCR) and relapse-free survival (RFS)</li>
+            <li>Engineered an automated feature extraction pipeline combining radiomics and deep learning representations, reducing manual feature engineering</li>
+            <li>Implemented intensity-based image registration, improving PCR/RFS prediction AUC by 0.02 (Wilcoxon signed-rank, p=0.01)</li>
+            <li>Showed radiomic features outperform deep learning representations pretrained on external medical tasks, preserving interpretability without sacrificing performance (p &lt; 0.05)</li>
+          </ul>
+          <h4>High Spatial-Temporal Resolution Electron Microscopy Imaging</h4>
+          <ul>
+            <li>Developing self-supervised denoising models for electron microscopy under zero ground-truth conditions across STEM/HRTEM modalities</li>
+            <li>Designed an adaptive quantile-based patch sampling algorithm, cutting training time by 25% while maintaining ~4 dB SNR improvement</li>
+            <li>Validated robustness across microscopy modalities and noise regimes through systematic benchmarking</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="title-block">
+            <span class="role-title">Seismic Hazard Modelling using Geological Priors and Catalog Features</span>
+            <span class="org">Independent research project</span>
+          </div>
+          <span class="dates">Jan 2026 – June 2026</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </summary>
+        <div class="details-body">
+          <ul>
+            <li>Developed <strong>GeoSeisML-12</strong>, the first multi-regime ML-ready seismic hazard benchmark spanning 12 patches across 8 tectonic regimes on 4 continents</li>
+            <li>Proposed a frozen geological prior GNN architecture enabling parameter-efficient cross-regional transfer by adapting only 1.6% of model parameters</li>
+            <li>Introduced the <strong>Monte Carlo Patch Cycling (MCPC)</strong> evaluation framework — 1,299 randomised cross-regional evaluations with leakage-free prior construction</li>
+            <li>Achieved mean cross-regional transfer degradation of just 0.20% relative to in-distribution performance across 5 checkpoints and 8 tectonic regimes</li>
+            <li>Paper under review at Computers &amp; Geosciences</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="title-block">
+            <span class="role-title">Research Assistant — Engineering (PEMC)</span>
+            <span class="org">University of Nottingham</span>
+          </div>
+          <span class="dates">Feb 2025 – Jan 2026</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </summary>
+        <div class="details-body">
+          <h4>MotorGPT: Data-Driven Electrical Machine Design Optimization</h4>
+          <ul>
+            <li>Developed surrogate ML models replacing expensive physics simulations, cutting design evaluation time from hours to minutes</li>
+            <li>Integrated hard engineering constraints to ensure physical feasibility of generated designs</li>
+            <li>Quantified accuracy-efficiency trade-offs between surrogate predictions and simulation baselines</li>
+            <li>Built a user-facing interface for domain experts with no programming background</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="title-block">
+            <span class="role-title">Research Intern — High-Performance Computing</span>
+            <span class="org">Shell</span>
+          </div>
+          <span class="dates">Jun 2023 – Sept 2023</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </summary>
+        <div class="details-body">
+          <ul>
+            <li>Developed a semi-automatic seismic image segmentation framework for mineral exploration using foundation vision models</li>
+            <li>Finetuned SAM (Segment Anything Model) for seismic facies segmentation on a large-scale internal dataset</li>
+            <li>Implemented GPU-accelerated training on HPC clusters, cutting model iteration time from days to hours</li>
+            <li>Built reproducible PyTorch pipelines with version control, experiment tracking, and automated testing</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <section id="education">
+      <span class="eyebrow">Background</span>
+      <h2>Education</h2>
+      <div class="edu-item">
+        <span class="deg">MSc (Integrated) Computer Science</span>
+        <span class="yrs">Sept 2021 – July 2025</span>
+      </div>
+      <div class="edu-sub">University of Nottingham &middot; 2:1 Honours &middot; Machine Learning, Data Science, Computer Vision</div>
+      <span class="award">🏆 Best Individual CS Research Project — Runner-up</span>
+    </section>
+
+    <section id="skills">
+      <span class="eyebrow">Toolkit</span>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <h4>Programming</h4>
+          <p>Python (PyTorch, Scikit-learn, Pandas, NumPy), MATLAB, SQL, Git</p>
+        </div>
+        <div class="skill-cat">
+          <h4>ML &amp; Methods</h4>
+          <p>Self-supervised learning, image segmentation &amp; registration, feature extraction, graph neural networks, surrogate modelling, statistical hypothesis testing</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Computing</h4>
+          <p>HPC/GPU acceleration (CUDA), Databricks, Slurm</p>
+        </div>
+        <div class="skill-cat">
+          <h4>Domain Tools</h4>
+          <p>Medical imaging &amp; longitudinal clinical data, geospatial analysis (ArcGIS Pro, QGIS), electron microscopy (HRTEM/STEM, Fiji)</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <span class="eyebrow">Get in Touch</span>
+      <h2>Contact</h2>
+      <div class="contact-cta">
+        <div>
+          <h3>Open to research collaborations &amp; opportunities</h3>
+          <p>rahul.ravi0623@gmail.com &middot; +91 96067 36263</p>
+        </div>
+        <a class="btn" href="mailto:rahul.ravi0623@gmail.com">Send an email</a>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2026 Rahul Ravi &middot; Built with plain HTML/CSS &middot; Hosted on GitHub Pages
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>
