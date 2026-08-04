@@ -206,14 +206,13 @@
     cursor:pointer;
     padding:18px 22px;
     display:flex;
-    justify-content:space-between;
     align-items:baseline;
     gap:16px;
     font-family:var(--font-body);
   }
   summary::-webkit-details-marker{ display:none; }
 
-  summary .title-block{ display:flex; flex-direction:column; gap:3px; }
+  summary .title-block{ display:flex; flex-direction:column; gap:3px; flex:1; min-width:0; }
   summary .role-title{ font-weight:600; font-size:15.5px; color:var(--ink); }
   summary .org{ font-size:13.5px; color:var(--ink-soft); }
   summary .dates{
