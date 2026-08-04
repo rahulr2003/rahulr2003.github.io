@@ -1,9 +1,3 @@
----
-layout: default
-title: Rahul Ravi
-description: Machine Learning Researcher — Medical Imaging, Geoscience, Electron Microscopy
----
-
 # Rahul Ravi
 
 Interested in developing and rigorously evaluating resource-efficient scientific ML methods that generalise across acquisition regimes and deployment contexts — with experience spanning medical imaging, geoscience, electron microscopy, and power electronics through independent and collaborative research.
