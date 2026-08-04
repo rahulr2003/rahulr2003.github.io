@@ -1,3 +1,9 @@
+---
+layout: default
+title: Rahul Ravi
+description: Machine Learning Researcher — Medical Imaging, Geoscience, Electron Microscopy
+---
+
 # Rahul Ravi
 
 Interested in developing and rigorously evaluating resource-efficient scientific ML methods that generalise across acquisition regimes and deployment contexts — with experience spanning medical imaging, geoscience, electron microscopy, and power electronics through independent and collaborative research.
@@ -10,7 +16,7 @@ Interested in developing and rigorously evaluating resource-efficient scientific
 
 **MSc (Integrated) Computer Science** — University of Nottingham *(Sept 2021 – July 2025)*
 2:1 Honours · Specialization: Machine Learning, Data Science, Computer Vision
-Best Individual CS Research Project (Runner-up)
+🏆 Best Individual CS Research Project (Runner-up)
 
 ---
 
