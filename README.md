@@ -8,7 +8,7 @@ description: Machine Learning Researcher — Medical Imaging, Geoscience, Electr
 
 Interested in developing and rigorously evaluating resource-efficient scientific ML methods that generalise across acquisition regimes and deployment contexts — with experience spanning medical imaging, geoscience, electron microscopy, and power electronics through independent and collaborative research.
 
-📧 rahul.ravi0623@gmail.com&nbsp;&nbsp;|&nbsp;&nbsp;📱 (+91) 9606736263&nbsp;&nbsp;|&nbsp;&nbsp;[LinkedIn](#)&nbsp;&nbsp;|&nbsp;&nbsp;[GitHub](#)
+📧 [rahul.ravi0623@gmail.com](mailto:rahul.ravi0623@gmail.com) &nbsp;·&nbsp; 📱 (+91) 9606736263 &nbsp;·&nbsp; [LinkedIn](#) &nbsp;·&nbsp; [GitHub](#)
 
 ---
 
@@ -22,16 +22,18 @@ Interested in developing and rigorously evaluating resource-efficient scientific
 
 ## Publications
 
-<details>
+<details markdown="1">
 <summary><strong>Cross-Regional Seismic Hazard Forecasting Across Diverse Tectonic Regimes via Frozen Geological Priors</strong> — Under review, Computers & Geosciences, 2026 (Preprint)</summary>
 
 R. Ravi. Proposes a frozen geological prior GNN architecture for parameter-efficient cross-regional seismic hazard transfer, evaluated via a Monte Carlo Patch Cycling framework across 8 tectonic regimes.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Breast Cancer Neoadjuvant Chemotherapy Treatment Response Prediction Using Aligned Longitudinal MRI and Clinical Data</strong> — Under review, Informatics in Medicine Unlocked, 2025 (Preprint)</summary>
 
 R. Ravi, R. Li, T. Abdelfatah, S. Chan, X. Chen. Predictive modelling framework combining registered longitudinal MRI and clinical data to forecast pathological complete response and relapse-free survival.
+
 </details>
 
 ---
@@ -40,15 +42,16 @@ R. Ravi, R. Li, T. Abdelfatah, S. Chan, X. Chen. Predictive modelling framework 
 
 *Sorted by most recent (ongoing roles listed first, then by end date)*
 
-<details>
+<details markdown="1">
 <summary><strong>Co-Founder | Auxi Studios</strong> — Sept 2025 – Present</summary>
 
 - Designed and productionized ORAS, an interactive business simulation tool with a real-time resource allocation engine
 - Ran production testing with 28 users across two focus groups, identifying and fixing critical race conditions
 - Built a scalable, zero-install, browser-based architecture optimized for accessibility and concurrent usage
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>ATP: An Auto-Tagging Pipeline for Wildlife Conservatories</strong> — May 2026 – Present</summary>
 
 - Applied transfer learning for animal detection using pre-trained models (SpeciesNet, built on YOLOv5)
@@ -56,9 +59,10 @@ R. Ravi, R. Li, T. Abdelfatah, S. Chan, X. Chen. Predictive modelling framework 
 - Architected a hierarchical detection and species classification pipeline across >75k camera-trap images spanning 40 species and 10 families
 - Implemented Grad-CAM for feature attribution via backward gradient propagation
 - Extending the pipeline with re-identification and longitudinal health monitoring methods
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Research Assistant — Computer Science | University of Nottingham</strong> — Sept 2023 – Present</summary>
 
 **Breast Cancer Treatment Response Prediction** ([Paper](#))
@@ -71,9 +75,10 @@ R. Ravi, R. Li, T. Abdelfatah, S. Chan, X. Chen. Predictive modelling framework 
 - Developing self-supervised denoising models for electron microscopy under zero ground-truth conditions across STEM/HRTEM modalities
 - Designed an adaptive quantile-based patch sampling algorithm, cutting training time by 25% while maintaining ~4 dB SNR improvement
 - Validated robustness across microscopy modalities and noise regimes through systematic benchmarking
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Seismic Hazard Modelling using Geological Priors and Catalog Features</strong> — Jan 2026 – June 2026</summary>
 
 - Developed **GeoSeisML-12**, the first multi-regime ML-ready seismic hazard benchmark spanning 12 patches across 8 tectonic regimes on 4 continents
@@ -81,9 +86,10 @@ R. Ravi, R. Li, T. Abdelfatah, S. Chan, X. Chen. Predictive modelling framework 
 - Introduced the **Monte Carlo Patch Cycling (MCPC)** evaluation framework — 1,299 randomised cross-regional evaluations with leakage-free prior construction
 - Achieved mean cross-regional transfer degradation of just 0.20% relative to in-distribution performance across 5 checkpoints and 8 tectonic regimes
 - *Paper under review at Computers & Geosciences*
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Research Assistant — Engineering (PEMC) | University of Nottingham</strong> — Feb 2025 – Jan 2026</summary>
 
 **MotorGPT: Data-Driven Electrical Machine Design Optimization**
@@ -91,15 +97,17 @@ R. Ravi, R. Li, T. Abdelfatah, S. Chan, X. Chen. Predictive modelling framework 
 - Integrated hard engineering constraints to ensure physical feasibility of generated designs
 - Quantified accuracy-efficiency trade-offs between surrogate predictions and simulation baselines
 - Built a user-facing interface for domain experts with no programming background
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Research Intern — High-Performance Computing | Shell</strong> — Jun 2023 – Sept 2023</summary>
 
 - Developed a semi-automatic seismic image segmentation framework for mineral exploration using foundation vision models
 - Finetuned SAM (Segment Anything Model) for seismic facies segmentation on a large-scale internal dataset
 - Implemented GPU-accelerated training on HPC clusters, cutting model iteration time from days to hours
 - Built reproducible PyTorch pipelines with version control, experiment tracking, and automated testing
+
 </details>
 
 ---
